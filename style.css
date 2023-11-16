@@ -1,4 +1,63 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 62.5%;
+}
+
+body {
+  font-weight: 400;
+  line-height: 1;
+  background-color: bisque;
+  color: #333333;
+}
+
+.container {
+  max-width: 60rem;
+  margin: 10rem auto;
+  padding: 1.2rem;
+  background-color: #fff;
+  text-align: center;
+}
+
+.header {
+  font-size: 3.6rem;
+  font-weight: 700;
+  margin-bottom: 2.8rem;
+}
+
+.characters {
+  font-size: 1.4rem;
+  margin-bottom: 5.6rem;
+}
+
+.guess {
+  height: 100%;
+  margin-bottom: 2.8rem;
+}
+
+.status {
+  font-size: 2.2rem;
+  margin-bottom: 4.8rem;
+}
+
+.lives-text {
+  font-size: 1.6rem;
+  margin-bottom: 1.8rem;
+}
+
+.buttons {
+  margin-bottom: 1.8rem;
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+}
+
+.btn {
+  width: 10rem;
+  height: 5rem;
 }
