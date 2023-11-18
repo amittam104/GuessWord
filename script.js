@@ -8,6 +8,8 @@
 // 6. Variable for Play again button
 
 // After user clicks on start game then Get the random word from the array and store it in a variable
+// User clicks the guess button and the user guessws word and the random word from the array will get compared. If the word is same then User Wins the game and the same will be reflected on the message. If user guess is wrong then the numbers of lives gets reduced.
+// If numbers of lives goes below 1 then user losses the game
 
 const fruits = [
   "Apple",
@@ -23,18 +25,41 @@ const fruits = [
 ];
 
 let guess = document.querySelector(".guess");
-let guessButton = document.querySelector(".btn-guess");
+let guessButton = document.querySelector(".guess-button");
 let start = document.querySelector(".start");
 let length = document.querySelector(".length");
-let status = document.querySelector(".status");
+let gameStatus = document.querySelector(".status");
 let again = document.querySelector(".again");
 let lives = document.querySelector(".lives");
 let randomFruit = "";
 
-start.addEventListener("click", function () {
+const wordGenrator = function () {
   let indexNumber = Math.trunc(Math.random() * 9 + 1);
-  let randomFruit = fruits[indexNumber];
-  console.log(randomFruit);
+  randomFruit = fruits[indexNumber];
+  length.textContent = randomFruit.length;
+  // console.log(randomFruit);
+};
+
+start.addEventListener("click", wordGenrator);
+
+guessButton.addEventListener("click", function () {
+  if (guess.value === randomFruit) {
+    gameStatus.textContent = "You Win! 🏆";
+  } else if (guess.value === "") {
+    gameStatus.textContent = "No Input 🔴";
+  } else {
+    gameStatus.textContent = "Wrong Guess! ❌";
+    lives.textContent--;
+    if (lives.textContent < 1) {
+      gameStatus.textContent = `You Lost! 💥 Your fruit was ${randomFruit}`;
+      lives.textContent = 0;
+    }
+  }
 });
 
-guessButton.addEventListener("click", function () {});
+again.addEventListener("click", function () {
+  gameStatus.textContent = "Let's Start";
+  lives.textContent = 3;
+  guess.value = "";
+  wordGenrator();
+});
