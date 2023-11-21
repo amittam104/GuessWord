@@ -42,7 +42,7 @@ const wordGenrator = function () {
 
 start.addEventListener("click", wordGenrator);
 
-guessButton.addEventListener("click", function () {
+const guesser = function () {
   if (guess.value === randomFruit) {
     gameStatus.textContent = "You Win! 🏆";
   } else if (guess.value === "") {
@@ -55,11 +55,19 @@ guessButton.addEventListener("click", function () {
       lives.textContent = 0;
     }
   }
-});
+};
+
+guessButton.addEventListener("click", guesser);
 
 again.addEventListener("click", function () {
   gameStatus.textContent = "Let's Start";
   lives.textContent = 3;
   guess.value = "";
   wordGenrator();
+});
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    guesser();
+  }
 });
